@@ -8,7 +8,7 @@ class StringParser {
         val signs = arrayOf('<', '>', '(', ')', '[', ']')
 
         for (i in 0..inputString.lastIndex) {
-            for (sign in 0..signs.size - 1 step 2) {
+            for (sign in signs.indices step 2) {
                 when (inputString[i]) {
                     signs[sign] -> {
                         counter = 0

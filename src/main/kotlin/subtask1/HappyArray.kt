@@ -5,17 +5,26 @@ class HappyArray {
         if (sadArray.size <= 2) {
             return sadArray
         }
-        val oldArray = sadArray.reversedArray()
-        val newArray = arrayListOf(oldArray[0])
-        var left = 0
+        var sadArray2 = sadArray
+        val newArray = arrayListOf(sadArray[0])
+        var left: Int
 
-        for (i in 1 until oldArray.lastIndex) {
-            if (oldArray[i] <= (oldArray[left] + oldArray[i + 1])) {
-                newArray.add(oldArray[i])
-                left = i
+        while (true) {
+            left = 0
+            for (i in 1 until sadArray2.lastIndex) {
+                if (sadArray2[i] <= (sadArray2[left] + sadArray2[i + 1])) {
+                    newArray.add(sadArray2[i])
+                    left = i
+                }
+            }
+            newArray.add(sadArray2[sadArray2.lastIndex])
+            if (newArray.size < sadArray2.size) {
+                sadArray2 = newArray.toIntArray()
+                newArray.clear()
+                newArray.add(sadArray2[0])
+            } else {
+                return newArray.toIntArray()
             }
         }
-        newArray.add(oldArray[oldArray.lastIndex])
-        return newArray.toIntArray().reversedArray()
     }
 }
