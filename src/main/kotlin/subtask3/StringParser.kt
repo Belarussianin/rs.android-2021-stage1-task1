@@ -7,7 +7,7 @@ class StringParser {
         val result = arrayListOf<String>()
         val signs = arrayOf('<', '>', '(', ')', '[', ']')
 
-        //for (i in 0..inputString.lastIndex) {
+        for (i in 0..inputString.lastIndex) {
             for (sign in signs.indices step 2) {
                 when (inputString[i]) {
                     signs[sign] -> {
@@ -28,7 +28,7 @@ class StringParser {
                     }
                 }
             }
-        //}
+        }
         return result.toTypedArray()
     }
 }
